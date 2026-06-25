@@ -44,14 +44,6 @@
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        .clickable:hover {
-            transform: scale(1.1) rotate(2deg);
-        }
-        
-        .envelope {
-            transition: all 0.5s;
-        }
-        
         .memory-card {
             transition: all 0.4s;
         }
@@ -67,6 +59,12 @@
         .crying-meme:hover {
             transform: scale(1.15);
         }
+
+        /* Forgiveness Section */
+        #noButton {
+            transition: all 0.2s ease;
+            position: relative;
+        }
     </style>
 </head>
 <body class="min-h-screen">
@@ -77,11 +75,11 @@
         <div class="max-w-2xl mx-auto text-center px-6 relative z-20">
             <div onclick="catchHeart(this)" class="inline-block text-6xl mb-6 cursor-pointer hover:scale-125 transition">💌</div>
             <h1 class="title mb-4">Dear Candy</h1>
-            <p class="text-3xl mb-8">Baby...</p>
+            <p class="text-3xl mb-8">Baby🥺</p>
             
             <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-10 border border-white/20">
                 <p id="typewriter" class="text-xl leading-relaxed italic min-h-[110px]">
-                    I'm sorry... I miss you.
+                    I'm sorry baby, I really miss you.
                 </p>
             </div>
             
@@ -97,17 +95,16 @@
         </div>
     </section>
 
-    <!-- Crying Meme Section -->
+    <!-- Crying Meme -->
     <section class="py-16 bg-white">
         <div class="max-w-md mx-auto px-6 text-center">
-            <h3 class="text-2xl mb-6 text-pink-700">This is how much I miss you right now...</h3>
+            <h3 class="text-2xl mb-6 text-pink-700">This is how much I miss you...</h3>
             <div onclick="this.classList.toggle('scale-110')" 
                  class="crying-meme mx-auto cursor-pointer inline-block bg-pink-50 p-4 rounded-3xl shadow">
                 <img src="https://github.com/gabbygxg/sorry-letter/blob/main/cryingcat.jpg" 
-                     alt="Crying Cat Meme - I miss you so much" 
-                     class="max-w-full rounded-2xl">
+                     alt="Crying meme" class="max-w-full rounded-2xl">
             </div>
-            <p class="mt-4 italic text-rose-600">"I miss you so badly it hurts... I'm really sorry, Baby 😢"</p>
+            <p class="mt-4 italic text-rose-600">"I miss you so badly, I'm really sorry, Baby 😢"</p>
         </div>
     </section>
 
@@ -116,18 +113,36 @@
         <div class="max-w-2xl mx-auto px-6">
             <div class="bg-gradient-to-br from-pink-50 to-rose-50 border border-pink-200 rounded-3xl p-12 shadow-inner">
                 <p class="text-2xl italic mb-8 text-center">My dearest Candy,</p>
-                
                 <div class="space-y-6 text-lg leading-relaxed">
                     <p>I’m truly, deeply sorry for the things I said during our fight. I never meant them, and I hate that I hurt you. I was wrong, and I take full responsibility.</p>
-                    
-                    <p>Since then, only calls and chats… it’s made me realize how much I’ve taken you for granted. I miss you. I miss us. I want to fix this — fix <strong>me</strong> — and make things right.</p>
-                    
+                    <p>it made me realize how much I’ve taken you for granted. I,m sorry baby. I miss you. I miss us. I want to fix this — fix <strong>me</strong> — and make things right.</p>
                     <p class="italic border-l-4 border-pink-400 pl-6">I know I have flaws and I’ve said things I never should have. But I’m willing to change. I’m ready to listen better, communicate properly, and do the things I said I would do. I promise to put in the work every single day to become the partner you deserve.</p>
-                    
                     <p>You mean everything to me. I love you and I care about your happiness more than anything. Please let me prove it to you.</p>
                 </div>
                 <div class="text-right mt-10 text-pink-600 font-medium">— Your Gab</div>
             </div>
+        </div>
+    </section>
+
+    <!-- Forgiveness Game -->
+    <section class="py-20 bg-gradient-to-b from-pink-50 to-white">
+        <div class="max-w-lg mx-auto px-6 text-center">
+            <h2 class="text-4xl title mb-8">Will you forgive me, Baby?</h2>
+            
+            <div class="relative h-40 flex items-center justify-center">
+                <button onclick="yesClicked()" 
+                        class="px-12 py-6 bg-green-500 hover:bg-green-600 text-white text-2xl font-medium rounded-3xl shadow-xl active:scale-95 transition-all">
+                    YES 💕
+                </button>
+                
+                <button id="noButton" 
+                        onmouseover="moveNoButton()"
+                        class="absolute px-10 py-6 bg-red-500 hover:bg-red-600 text-white text-2xl font-medium rounded-3xl shadow-xl transition-all">
+                    NO 😢
+                </button>
+            </div>
+            
+            <div id="forgiveResponse" class="mt-12 min-h-[120px] text-2xl italic text-pink-600"></div>
         </div>
     </section>
 
@@ -163,7 +178,7 @@
     <!-- Love Jar -->
     <section class="py-20 bg-white">
         <div class="max-w-md mx-auto px-6 text-center">
-            <h2 class="text-4xl title mb-8">Fill the Love Jar for You</h2>
+            <h2 class="text-4xl title mb-8">Fill the Love Jar</h2>
             <div onclick="addToJar()" id="jar" 
                  class="mx-auto w-52 h-52 bg-gradient-to-br from-pink-100 to-rose-100 rounded-3xl border-8 border-pink-300 flex items-center justify-center text-7xl cursor-pointer shadow-inner relative overflow-hidden">
                 <span id="jarCount" class="text-6xl">0</span>
@@ -175,13 +190,11 @@
     <!-- Final -->
     <footer class="py-20 bg-white text-center">
         <div class="max-w-lg mx-auto px-6">
-            <p class="text-xl mb-10">I really hope this shows how sorry I am and how much I want to fix everything. Let’s talk soon, Baby.</p>
-            
+            <p class="text-xl mb-10">Thank you for reading this, Candy. I really mean every word.</p>
             <button onclick="finalSurprise()" 
                     class="px-10 py-5 bg-gradient-to-r from-pink-500 to-rose-500 text-white rounded-3xl text-lg hover:brightness-110 active:scale-95">
-                One last surprise for you 💕
+                One last surprise 💕
             </button>
-            
             <p class="mt-12 text-2xl">With all my love,<br><span class="title text-pink-600">Gab</span></p>
         </div>
     </footer>
@@ -228,7 +241,6 @@
         function bloomFlower(el, num) {
             const flowers = ['🌸', '🌺', '🌷', '💐'];
             el.querySelector('.flower').textContent = flowers[num-1];
-            
             const messages = ["", 
                 "Those late-night calls still make my heart warm. I miss hearing your voice.",
                 "Our funny chats always made me laugh. I want that joy back.",
@@ -242,10 +254,8 @@
         function addToJar() {
             jarHearts++;
             document.getElementById('jarCount').textContent = jarHearts;
-            
             const statuses = ["Filling up with love for you...", "Every click is a promise 💕", "I miss you, Candy", "I'm here and I'm sorry"];
             document.getElementById('jarStatus').textContent = statuses[Math.floor(Math.random()*statuses.length)];
-            
             if (jarHearts % 7 === 0) {
                 for (let i = 0; i < 15; i++) setTimeout(createHeart, i*40);
             }
@@ -255,6 +265,32 @@
             el.style.transition = 'all 0.4s';
             el.style.transform = 'scale(2) rotate(30deg)';
             setTimeout(() => el.style.transform = '', 700);
+        }
+
+        // Forgiveness Section
+        function yesClicked() {
+            const response = document.getElementById('forgiveResponse');
+            response.innerHTML = `
+                <span class="block text-4xl mb-4">💕</span>
+                Thank you Babyyyy!<br>
+                I love you so much! ❤️
+            `;
+            response.style.color = '#e11d48';
+            for (let i = 0; i < 30; i++) {
+                setTimeout(createHeart, i * 30);
+            }
+        }
+
+        function moveNoButton() {
+            const noBtn = document.getElementById('noButton');
+            const x = Math.random() * 300 - 150;
+            const y = Math.random() * 200 - 100;
+            noBtn.style.transform = `translate(${x}px, ${y}px)`;
+            
+            // Reset position after a bit
+            setTimeout(() => {
+                noBtn.style.transform = 'translate(0, 0)';
+            }, 800);
         }
 
         function finalSurprise() {
