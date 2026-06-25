@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Candy ♡</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(to bottom, #fdf2f8, #fce7f3, #f3e8ff);
+            overflow-x: hidden;
+            color: #4c1d2f;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(rgba(190, 24, 93, 0.88), rgba(157, 23, 77, 0.92));
+        }
+        
+        .heart {
+            position: absolute;
+            font-size: 1.8rem;
+            color: #e11d48;
+            animation: floatHeart 14s linear infinite;
+            opacity: 0.45;
+            cursor: pointer;
+            z-index: 1;
+        }
+        
+        @keyframes floatHeart {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-120vh) rotate(180deg); }
+        }
+        
+        .title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.2rem;
+        }
+        
+        .clickable {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .clickable:hover {
+            transform: scale(1.1) rotate(2deg);
+        }
+        
+        .envelope {
+            transition: all 0.5s;
+        }
+        
+        .memory-card {
+            transition: all 0.4s;
+        }
+        
+        .memory-card:hover {
+            transform: translateY(-10px) rotate(1deg);
+        }
+        
+        .crying-meme {
+            transition: transform 0.4s;
+        }
+        
+        .crying-meme:hover {
+            transform: scale(1.15);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <div id="hearts" class="fixed inset-0 pointer-events-none z-10"></div>
+
+    <!-- Hero -->
+    <section class="hero-bg min-h-screen flex items-center justify-center relative text-white">
+        <div class="max-w-2xl mx-auto text-center px-6 relative z-20">
+            <div onclick="catchHeart(this)" class="inline-block text-6xl mb-6 cursor-pointer hover:scale-125 transition">💌</div>
+            <h1 class="title mb-4">Dear Candy</h1>
+            <p class="text-3xl mb-8">Baby...</p>
+            
+            <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-10 border border-white/20">
+                <p id="typewriter" class="text-xl leading-relaxed italic min-h-[110px]">
+                    I'm sorry... I miss you.
+                </p>
+            </div>
+            
+            <div class="mt-12 flex justify-center gap-8">
+                <div onclick="openEnvelope()" class="envelope w-32 h-32 bg-white/90 text-pink-600 rounded-3xl flex items-center justify-center cursor-pointer shadow-2xl hover:rotate-6">
+                    <i class="fa-solid fa-envelope text-6xl"></i>
+                </div>
+                <div onclick="sendHug()" class="w-32 h-32 bg-white/90 text-pink-600 rounded-3xl flex items-center justify-center cursor-pointer shadow-2xl hover:-rotate-6">
+                    <i class="fa-solid fa-hands-holding-heart text-6xl"></i>
+                </div>
+            </div>
+            <p class="text-sm mt-4 opacity-75">Click the envelope • Click for a hug</p>
+        </div>
+    </section>
+
+    <!-- Crying Meme Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-md mx-auto px-6 text-center">
+            <h3 class="text-2xl mb-6 text-pink-700">This is how much I miss you right now...</h3>
+            <div onclick="this.classList.toggle('scale-110')" 
+                 class="crying-meme mx-auto cursor-pointer inline-block bg-pink-50 p-4 rounded-3xl shadow">
+                <img src="https://www.stickpng.com/assets/images/5ee772d099588c0004aa684b.png" 
+                     alt="Crying Cat Meme - I miss you so much" 
+                     class="max-w-full rounded-2xl">
+            </div>
+            <p class="mt-4 italic text-rose-600">"I miss you so badly it hurts... I'm really sorry, Baby 😢"</p>
+        </div>
+    </section>
+
+    <!-- Updated Letter -->
+    <section id="letter" class="hidden py-20 bg-white">
+        <div class="max-w-2xl mx-auto px-6">
+            <div class="bg-gradient-to-br from-pink-50 to-rose-50 border border-pink-200 rounded-3xl p-12 shadow-inner">
+                <p class="text-2xl italic mb-8 text-center">My dearest Candy,</p>
+                
+                <div class="space-y-6 text-lg leading-relaxed">
+                    <p>I’m truly, deeply sorry for the things I said during our fight. I never meant them, and I hate that I hurt you. I was wrong, and I take full responsibility.</p>
+                    
+                    <p>Since then, only calls and chats… it’s made me realize how much I’ve taken you for granted. I miss you. I miss us. I want to fix this — fix <strong>me</strong> — and make things right.</p>
+                    
+                    <p class="italic border-l-4 border-pink-400 pl-6">I know I have flaws and I’ve said things I never should have. But I’m willing to change. I’m ready to listen better, communicate properly, and do the things I said I would do. I promise to put in the work every single day to become the partner you deserve.</p>
+                    
+                    <p>You mean everything to me. I love you and I care about your happiness more than anything. Please let me prove it to you.</p>
+                </div>
+                <div class="text-right mt-10 text-pink-600 font-medium">— Your Gab</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Memory Garden -->
+    <section class="py-20 bg-pink-50">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-4xl title text-center mb-6">Our Memory Garden 🌸</h2>
+            <p class="text-center text-pink-600 mb-10">Click the flowers to bloom memories</p>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div onclick="bloomFlower(this, 1)" class="memory-card bg-white p-6 rounded-3xl text-center cursor-pointer">
+                    <div class="flower text-5xl">🌱</div>
+                    <p class="mt-4 font-medium">Late night calls</p>
+                </div>
+                <div onclick="bloomFlower(this, 2)" class="memory-card bg-white p-6 rounded-3xl text-center cursor-pointer">
+                    <div class="flower text-5xl">🌱</div>
+                    <p class="mt-4 font-medium">Funny chats</p>
+                </div>
+                <div onclick="bloomFlower(this, 3)" class="memory-card bg-white p-6 rounded-3xl text-center cursor-pointer">
+                    <div class="flower text-5xl">🌱</div>
+                    <p class="mt-4 font-medium">Your smile</p>
+                </div>
+                <div onclick="bloomFlower(this, 4)" class="memory-card bg-white p-6 rounded-3xl text-center cursor-pointer">
+                    <div class="flower text-5xl">🌱</div>
+                    <p class="mt-4 font-medium">Future together</p>
+                </div>
+            </div>
+            
+            <div id="gardenMessage" class="mt-12 text-center italic text-lg min-h-[80px]"></div>
+        </div>
+    </section>
+
+    <!-- Love Jar -->
+    <section class="py-20 bg-white">
+        <div class="max-w-md mx-auto px-6 text-center">
+            <h2 class="text-4xl title mb-8">Fill the Love Jar for You</h2>
+            <div onclick="addToJar()" id="jar" 
+                 class="mx-auto w-52 h-52 bg-gradient-to-br from-pink-100 to-rose-100 rounded-3xl border-8 border-pink-300 flex items-center justify-center text-7xl cursor-pointer shadow-inner relative overflow-hidden">
+                <span id="jarCount" class="text-6xl">0</span>
+            </div>
+            <p id="jarStatus" class="mt-8 text-xl italic min-h-[60px]"></p>
+        </div>
+    </section>
+
+    <!-- Final -->
+    <footer class="py-20 bg-white text-center">
+        <div class="max-w-lg mx-auto px-6">
+            <p class="text-xl mb-10">I really hope this shows how sorry I am and how much I want to fix everything. Let’s talk soon, Baby.</p>
+            
+            <button onclick="finalSurprise()" 
+                    class="px-10 py-5 bg-gradient-to-r from-pink-500 to-rose-500 text-white rounded-3xl text-lg hover:brightness-110 active:scale-95">
+                One last surprise for you 💕
+            </button>
+            
+            <p class="mt-12 text-2xl">With all my love,<br><span class="title text-pink-600">Gab</span></p>
+        </div>
+    </footer>
+
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.textContent = '💕';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 9 + 11) + 's';
+            heart.onclick = () => { heart.style.transform = 'scale(3)'; heart.style.opacity = '0'; setTimeout(() => heart.remove(), 600); };
+            document.getElementById('hearts').appendChild(heart);
+            setTimeout(() => heart.remove(), 26000);
+        }
+        
+        setInterval(() => {
+            if (Math.random() > 0.35) createHeart();
+        }, 450);
+
+        setTimeout(() => {
+            document.getElementById('typewriter').textContent = "I'm so sorry... I miss you more than anything.";
+        }, 800);
+
+        function openEnvelope() {
+            document.getElementById('letter').classList.remove('hidden');
+            document.getElementById('letter').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function sendHug() {
+            const hug = document.createElement('div');
+            hug.textContent = '🤗';
+            hug.style.position = 'fixed';
+            hug.style.fontSize = '6rem';
+            hug.style.left = '50%';
+            hug.style.top = '40%';
+            hug.style.zIndex = '100';
+            hug.style.transition = 'all 1s';
+            document.body.appendChild(hug);
+            setTimeout(() => { hug.style.transform = 'translateY(-250px) scale(0.2)'; hug.style.opacity = '0'; }, 100);
+            setTimeout(() => hug.remove(), 1400);
+        }
+
+        function bloomFlower(el, num) {
+            const flowers = ['🌸', '🌺', '🌷', '💐'];
+            el.querySelector('.flower').textContent = flowers[num-1];
+            
+            const messages = ["", 
+                "Those late-night calls still make my heart warm. I miss hearing your voice.",
+                "Our funny chats always made me laugh. I want that joy back.",
+                "Your smile is everything to me. I want to see it again.",
+                "We can still build a beautiful future together. I'm ready to work for it."
+            ];
+            document.getElementById('gardenMessage').textContent = messages[num];
+        }
+
+        let jarHearts = 0;
+        function addToJar() {
+            jarHearts++;
+            document.getElementById('jarCount').textContent = jarHearts;
+            
+            const statuses = ["Filling up with love for you...", "Every click is a promise 💕", "I miss you, Candy", "I'm here and I'm sorry"];
+            document.getElementById('jarStatus').textContent = statuses[Math.floor(Math.random()*statuses.length)];
+            
+            if (jarHearts % 7 === 0) {
+                for (let i = 0; i < 15; i++) setTimeout(createHeart, i*40);
+            }
+        }
+
+        function catchHeart(el) {
+            el.style.transition = 'all 0.4s';
+            el.style.transform = 'scale(2) rotate(30deg)';
+            setTimeout(() => el.style.transform = '', 700);
+        }
+
+        function finalSurprise() {
+            for (let i = 0; i < 45; i++) {
+                setTimeout(createHeart, i * 25);
+            }
+            alert("💖 I mean every word, Candy. Let's fix this together.");
+        }
+    </script>
+</body>
+</html>
